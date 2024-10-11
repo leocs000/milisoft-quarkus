@@ -27,7 +27,7 @@ public class UsuarioLogadoResource {
     UsuarioService usuarioService;
 
     @GET
-    @RolesAllowed({ "User", "Admin" })
+//   @RolesAllowed({ "User", "Admin" })
     public Response getMeuUsuario() {
 
         // Obtendo o login pelo token jwt
@@ -39,7 +39,7 @@ public class UsuarioLogadoResource {
 
     @Path("/usuariologado/alterarsenha")
     @PUT
-    @RolesAllowed({"User", "Admin"})
+//    @RolesAllowed({"User", "Admin"})
     public Response putInfos(alterarSenhaUsuarioDTO senhaUsuarioDTO){
         String login = jwt.getSubject();
         Log.info("Pegando o usuario logado string: " + login);
@@ -50,7 +50,7 @@ public class UsuarioLogadoResource {
 
     @Path("/usuariologado/alterarlogin")
     @PUT
-    @RolesAllowed({"User", "Admin"})
+//    @RolesAllowed({"User", "Admin"})
     public Response putInfos(alterarLoginUsuarioDTO loginUsuarioDTO){
         String login = jwt.getSubject();
         Log.info("Pegando o usuario logado string: " + login);
