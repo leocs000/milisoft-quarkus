@@ -38,6 +38,7 @@ public class ArmaResource {
     @Inject
     ArmaService service;
 
+    
     @POST
 //    @RolesAllowed({"Admin"})
     public Response insert(ArmaDTO dto) {
