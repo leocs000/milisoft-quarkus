@@ -47,8 +47,8 @@ public class AcabamentoServiceImpl implements AcabamentoService {
     }
 
     @Override
-    public AcabamentoResponseDTO findById(Long id) {
-        return AcabamentoResponseDTO.valueOf(repository.findById(id));
+    public Acabamento findById(Long id) {
+        return repository.findById(id);
     }
 
     @Override

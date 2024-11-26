@@ -2,6 +2,8 @@ package unitins.tp1.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,10 +17,12 @@ public class Arma extends Produto{
     private TipoArma tipo;
     @Column(length = 60)
     private String marca;
-    @Column(length = 60)
-    private String acabamento;
-    @Column
-    private String calibre;
+    @ManyToOne
+    @JoinColumn(name = "id_acabamento")
+    private Acabamento acabamento;
+    @ManyToOne
+    @JoinColumn(name = "id_calibre")
+    private Calibre calibre;
     @Column(length = 60)
     private String comprimentoDoCano;
     @Column

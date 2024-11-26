@@ -36,18 +36,32 @@ VALUES
     ('8901234567', '888.888.888-88', 'Aline', 'aline@example.com', '{"1234567897", "9876543217"}'),
     ('9012345678', '999.999.999-99', 'Fernanda', 'fernanda@example.com', '{"1234567898", "9876543218"}');
 
+INSERT INTO acabamento(material)
+VALUES
+    ('Madeira'),
+    ('Cromado'),
+    ('Ouro'),
+    ('Diamante'); 
+
+INSERT INTO calibre(calibre)
+VALUES
+    ('.357 Magnum'),
+    ('5.56mm'),
+    ('9mm'),
+    ('7.62mm NATO');    
+
 INSERT INTO arma(
 	capacidadedetiro, preco, qtdnoestoque, tipo_arma, modelo, numerosigma, comprimentodocano,
-    acabamento, marca, nome, descricao, calibre, numerodaarma, registro_nacional_armas)
+    id_acabamento, marca, nome, descricao, id_calibre, numerodaarma, registro_nacional_armas)
 VALUES
-    (15, 2000.00, 30, 1, 'Smith & Wesson Model 686', 'SW686-001', '6"', 'Polido', 'Smith & Wesson', 'Revólver .357 Magnum', 'Um revólver clássico, conhecido por sua confiabilidade e precisão.', '.357 Magnum', 'SW001', 'RN001'),
-    (30, 1500.00, 20, 4, 'Colt AR-15', 'COLTAR15-002', '16"', 'Fosco', 'Colt', 'Rifle AR-15', 'Um rifle semiautomático, amplamente utilizado para esportes de tiro e caça.', '5.56mm', 'COLT002', 'RN002'),
-    (8, 800.00, 25, 2, 'Glock 19', 'GLOCK19-003', '4"', 'Prateado', 'Glock', 'Pistola Glock 19', 'Uma pistola compacta, popular entre forças policiais e civis.', '9mm', 'GLK003', 'RN003'),
-    (5, 1200.00, 15, 7, 'Remington 870', 'REM870-004', '24"', 'Fosco', 'Remington', 'Escopeta Remington 870', 'Uma escopeta de bombeamento clássica, amplamente utilizada para caça e defesa.', '12 gauge', 'REM004', 'RN004'),
-    (20, 1800.00, 10, 5, 'Springfield M1A', 'SPFM1A-005', '18"', 'Polido', 'Springfield Armory', 'Carabina Springfield M1A', 'Uma carabina semiautomática, derivada do M14, conhecida por sua precisão.', '7.62mm NATO', 'SPF005', 'RN005'),
-    (25, 2500.00, 12, 6, 'Heckler & Koch MP5', 'HKMP5-006', '10"', 'Fosco', 'Heckler & Koch', 'Submetralhadora MP5', 'Uma submetralhadora compacta, amplamente utilizada por forças policiais e militares em todo o mundo.', '9mm', 'HCK006', 'RN006'),
-    (30, 3500.00, 8, 8, 'FN SCAR', 'FNSCAR-007', '20"', 'Prateado', 'FN Herstal', 'Fuzil FN SCAR', 'Um fuzil de assalto moderno e versátil, utilizado por forças especiais em todo o mundo.', '5.56mm', 'FNS007', 'RN007'),
-    (6, 1000.00, 18, 1, 'Smith & Wesson Model 637', 'SW637-008', '4"', 'Polido', 'Smith & Wesson', 'Revólver .38 Special', 'Um revólver compacto, ideal para uso como arma de backup ou defesa pessoal.', '.38 Special', 'SW002', 'RN008');
+    (15, 2000.00, 30, 1, 'Smith & Wesson Model 686', 'SW686-001', '6"', 1, 'Smith & Wesson', 'Revólver .357 Magnum', 'Um revólver clássico, conhecido por sua confiabilidade e precisão.', 1, 'SW001', 'RN001'),
+    (30, 1500.00, 20, 4, 'Colt AR-15', 'COLTAR15-002', '16"', 1, 'Colt', 'Rifle AR-15', 'Um rifle semiautomático, amplamente utilizado para esportes de tiro e caça.', 2, 'COLT002', 'RN002'),
+    (8, 800.00, 25, 2, 'Glock 19', 'GLOCK19-003', '4"', 2, 'Glock', 'Pistola Glock 19', 'Uma pistola compacta, popular entre forças policiais e civis.', 4, 'GLK003', 'RN003'),
+    (5, 1200.00, 15, 7, 'Remington 870', 'REM870-004', '24"', 1, 'Remington', 'Escopeta Remington 870', 'Uma escopeta de bombeamento clássica, amplamente utilizada para caça e defesa.', 3, 'REM004', 'RN004'),
+    (20, 1800.00, 10, 5, 'Springfield M1A', 'SPFM1A-005', '18"', 3, 'Springfield Armory', 'Carabina Springfield M1A', 'Uma carabina semiautomática, derivada do M14, conhecida por sua precisão.', 4, 'SPF005', 'RN005'),
+    (25, 2500.00, 12, 6, 'Heckler & Koch MP5', 'HKMP5-006', '10"', 2, 'Heckler & Koch', 'Submetralhadora MP5', 'Uma submetralhadora compacta, amplamente utilizada por forças policiais e militares em todo o mundo.', 1, 'HCK006', 'RN006'),
+    (30, 3500.00, 8, 8, 'FN SCAR', 'FNSCAR-007', '20"', 2, 'FN Herstal', 'Fuzil FN SCAR', 'Um fuzil de assalto moderno e versátil, utilizado por forças especiais em todo o mundo.', 2, 'FNS007', 'RN007'),
+    (6, 1000.00, 18, 1, 'Smith & Wesson Model 637', 'SW637-008', '4"', 3, 'Smith & Wesson', 'Revólver .38 Special', 'Um revólver compacto, ideal para uso como arma de backup ou defesa pessoal.', 3, 'SW002', 'RN008');
 
 
 INSERT INTO funcionario (matricula, cpf, telefone, nome, email)

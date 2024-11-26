@@ -1,5 +1,8 @@
 package unitins.tp1.dto.arma;
 
+import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
+import unitins.tp1.dto.calibre.CalibreResponseDTO;
+import unitins.tp1.model.Acabamento;
 import unitins.tp1.model.Arma;
 import unitins.tp1.model.TipoArma;
 
@@ -11,8 +14,8 @@ public record ArmaResponseDTO(
     int qtdNoEstoque,
     TipoArma tipo,
     String marca,
-    String acabamento,
-    String calibre,
+    AcabamentoResponseDTO acabamento,
+    CalibreResponseDTO calibre,
     String comprimentoDoCano,
     int capacidadeDeTiro,
     String numeroSigma,
@@ -30,8 +33,8 @@ public record ArmaResponseDTO(
                 arma.getQtdNoEstoque(),
                 arma.getTipo(),
                 arma.getMarca(),
-                arma.getAcabamento(),
-                arma.getCalibre(),
+                AcabamentoResponseDTO.valueOf(arma.getAcabamento()),
+                CalibreResponseDTO.valueOf(arma.getCalibre()),
                 arma.getComprimentoDoCano(),
                 arma.getCapacidadeDeTiro(),
                 arma.getNumeroSigma(),

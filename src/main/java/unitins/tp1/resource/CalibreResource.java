@@ -17,15 +17,17 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import unitins.tp1.dto.acabamento.AcabamentoDTO;
 import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
+import unitins.tp1.dto.calibre.CalibreDTO;
+import unitins.tp1.dto.calibre.CalibreResponseDTO;
 import unitins.tp1.service.acabamento.AcabamentoService;
+import unitins.tp1.service.calibre.CalibreService;
 
-@Path("/acabamentos")
+@Path("/calibres")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class AcabamentoResource {
-
+public class CalibreResource {
     @Inject
-    AcabamentoService service;
+    CalibreService service;
 
     @Inject
     JsonWebToken jwt;
@@ -33,14 +35,14 @@ public class AcabamentoResource {
     @Transactional
     @POST
 //    @RolesAllowed({"Admin"})
-    public Response insert(AcabamentoDTO dto) {
+    public Response insert(CalibreDTO dto) {
         try {
             
-            AcabamentoResponseDTO responseDTO = service.insert(dto);
+            CalibreResponseDTO responseDTO = service.insert(dto);
             return Response.status(Response.Status.CREATED).entity(responseDTO).build();
         } catch (Exception e) {
-            Log.error("Erro ao cadastrar uma arma: ", e);
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao cadastrar a arma.").build();
+            Log.error("Erro ao cadastrar o calibre: ", e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao cadastrar o calibre.").build();
         }
     }
 
@@ -48,8 +50,8 @@ public class AcabamentoResource {
     @Transactional
     @Path("/{id}")
 //    @RolesAllowed({"User","Admin"})
-    public AcabamentoResponseDTO update(AcabamentoDTO dto, @PathParam("id") Long id) {
-        Log.info("Atualizando um Acabamento: "+id);
+    public CalibreResponseDTO update(CalibreDTO dto, @PathParam("id") Long id) {
+        Log.info("Atualizando um calibre: "+id);
         return service.update(dto, id);
     }
 
@@ -58,14 +60,14 @@ public class AcabamentoResource {
     @Path("/{id}")
 //    @RolesAllowed({"User","Admin"})
     public void delete(@PathParam("id") Long id) {
-        Log.info("Deletando um Acabamento:" +id);
+        Log.info("Deletando um calibre:" +id);
         service.delete(id);
     }
 
     @GET
 //    @RolesAllowed({"User","Admin"})
     public Response findAll(){
-        Log.info("Buscando todos os Acabamentos cadastrados.");
+        Log.info("Buscando todos os calibres cadastrados.");
         return Response.ok(service.findByAll()).build();
     }
 
@@ -73,7 +75,7 @@ public class AcabamentoResource {
     @Path("/{id}")
 //    @RolesAllowed({"Admin"})
     public Response findById(@PathParam("id") Long id){
-        Log.info("Buscando um acabamento expecificado pelo id: "+id);
+        Log.info("Buscando um calibre expecificado pelo id: "+id);
         return Response.ok(service.findById(id)).build();
     }
 
@@ -81,7 +83,8 @@ public class AcabamentoResource {
     @Path("/search/nome/{nome}")
 //    @RolesAllowed({"User","Admin"})
     public Response findByNome(@PathParam("nome") String nome){
-        Log.info("Buscando um acabamento expecificado pelo nome: "+nome);
+        Log.info("Buscando um calibre expecificado pelo nome: "+nome);
         return Response.ok(service.findByNome(nome)).build();
     }
+
 }

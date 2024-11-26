@@ -4,6 +4,7 @@ import java.util.List;
 
 import unitins.tp1.dto.acabamento.AcabamentoDTO;
 import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
+import unitins.tp1.model.Acabamento;
 
 
 
@@ -14,7 +15,7 @@ public interface AcabamentoService {
 
     public void delete(Long id);
 
-    public AcabamentoResponseDTO findById(Long id);
+    public Acabamento findById(Long id);
     
     public List<AcabamentoResponseDTO> findByNome(String nome);
 

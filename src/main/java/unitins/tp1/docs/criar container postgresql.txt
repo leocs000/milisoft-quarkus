@@ -1,1 +1,1 @@
-docker run --name tp2 -e POSTGRES_USER=topicos1 -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=topicos1db -p 5432:5432 -d postgres
+docker run --name tp2 -e POSTGRES_USER=topicos2 -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=topicos2db -p 5432:5432 -d postgres

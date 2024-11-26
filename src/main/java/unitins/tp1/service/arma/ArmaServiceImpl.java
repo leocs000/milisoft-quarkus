@@ -11,11 +11,19 @@ import unitins.tp1.dto.arma.ArmaResponseDTO;
 import unitins.tp1.model.Arma;
 import unitins.tp1.model.TipoArma;
 import unitins.tp1.repository.ArmaRepository;
+import unitins.tp1.service.acabamento.AcabamentoService;
+import unitins.tp1.service.calibre.CalibreService;
 
 @ApplicationScoped
 public class ArmaServiceImpl implements ArmaService {
     @Inject
     ArmaRepository repository;
+
+    @Inject
+    AcabamentoService acabamentoService;
+
+    @Inject
+    CalibreService calibreService;
 
     @Override
     @Transactional
@@ -26,8 +34,8 @@ public class ArmaServiceImpl implements ArmaService {
             novaArma.setPreco(dto.getPreco());
             novaArma.setQtdNoEstoque(dto.getQtdNoEstoque());
             novaArma.setTipo(TipoArma.valueOf(dto.getTipo()));
-            novaArma.setAcabamento(dto.getAcabamento());
-            novaArma.setCalibre(dto.getCalibre());
+            novaArma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
+            novaArma.setCalibre(calibreService.findById(dto.getIdCalibre()));
             novaArma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
             novaArma.setComprimentoDoCano(dto.getComprimentoDoCano());
             novaArma.setMarca(dto.getMarca());
@@ -52,8 +60,8 @@ public class ArmaServiceImpl implements ArmaService {
             arma.setPreco(dto.getPreco());
             arma.setQtdNoEstoque(dto.getQtdNoEstoque());
             arma.setTipo(TipoArma.valueOf(dto.getTipo()));
-            arma.setAcabamento(dto.getAcabamento());
-            arma.setCalibre(dto.getCalibre());
+            arma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
+            arma.setCalibre(calibreService.findById(dto.getIdCalibre()));
             arma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
             arma.setComprimentoDoCano(dto.getComprimentoDoCano());
             arma.setMarca(dto.getMarca());

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import unitins.tp1.model.Acabamento;
 
 @Getter
 @Setter
@@ -15,9 +16,9 @@ public class ArmaDTO extends ProdutoDTO {
     @NotBlank(message = "insira o 'marca' corretamente")
     String marca;
     @NotBlank(message = "insira o 'acabamento' corretamente")
-    String acabamento;
+    Long idAcabamento;
     @NotBlank(message = "insira o 'calibre' corretamente")
-    String calibre;
+    Long idCalibre;
     @NotBlank(message = "insira o 'comprimento do cano' corretamente")
     String comprimentoDoCano;
     @NotNull(message = "insira o 'capacidade de tiro' corretamente")
@@ -36,8 +37,8 @@ public class ArmaDTO extends ProdutoDTO {
             @NotBlank(message = "insira a descrição corretamente") String descricao,
             @NotNull(message = "insira o tipo de arma corretamente") int tipo,
             @NotBlank(message = "insira o 'marca' corretamente") String marca,
-            @NotBlank(message = "insira o 'acabamento' corretamente") String acabamento,
-            @NotBlank(message = "insira o 'calibre' corretamente") String calibre,
+            @NotBlank(message = "insira o 'acabamento' corretamente") Long idAcabamento,
+            @NotBlank(message = "insira o 'calibre' corretamente") Long idCalibre,
             @NotBlank(message = "insira o 'comprimento do cano' corretamente") String comprimentoDoCano,
             @NotNull(message = "insira o 'capacidade de tiro' corretamente") int capacidadeDeTiro,
             @NotBlank(message = "insira o 'nomero sigma' corretamente") String numeroSigma,
@@ -46,8 +47,8 @@ public class ArmaDTO extends ProdutoDTO {
         super(nome, qtdNoEstoque, preco, descricao);
         this.tipo = tipo;
         this.marca = marca;
-        this.acabamento = acabamento;
-        this.calibre = calibre;
+        this.idAcabamento = idAcabamento;
+        this.idCalibre = idCalibre;
         this.comprimentoDoCano = comprimentoDoCano;
         this.capacidadeDeTiro = capacidadeDeTiro;
         this.numeroSigma = numeroSigma;
