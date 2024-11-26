@@ -17,7 +17,7 @@ class Arma{
     - numeroSigma: String
     - numeroDaArma: String
     - modelo: String
-    - rna: String
+ '   - rna: String
 }
 
 enum TipoArma{
