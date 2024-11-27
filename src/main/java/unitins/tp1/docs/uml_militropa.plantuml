@@ -6,18 +6,50 @@ class Produto{
     - descricao: String
     - preco: Double
     - qtdNoEstoque: Integer
+    - marca: String
+    - modelo: String
+    - categoria: Categoria
+    - material: Material
+    - calibre: Calibre
+}
+
+class Municao{
+    - cor: String
 }
 
 class Arma{
-    - marca: String
-    - acabamento: String
-    - calibre: String
-    - comprimentoDoCano: String
+    - acabamento: Acabamento
+    - peso: Double
+    - tipoPropulsor: String
+    - tipoTiro: TipoTiro
+    - tipoMunicao: Municao
+    - velocidade: String
     - capacidadeDeTiro: int
-    - numeroSigma: String
-    - numeroDaArma: String
-    - modelo: String
- '   - rna: String
+}
+
+class Categoria{
+    - id: Long
+    - descricao: String
+}
+
+class SubCategoria{
+    - categoria: Categoria
+}
+
+class TipoTiro{
+    - descricao: String
+}
+
+class Acabamento{
+    - material: Material
+}
+
+class Calibre{
+    - calibre: String
+}
+
+class Material{
+    - material: String
 }
 
 enum TipoArma{
@@ -107,12 +139,25 @@ Pedido "*" o--> "1" Usuario
 ItemPedido "*" --> "1" Arma
 
 Usuario "1" *--> "1" Perfil
+
 Funcionario "1" o--> "1" Usuario
 Funcionario "1" o--> "1" Endereco
+
 Cliente "1" o--> "*" Endereco
 Cliente "1" o--> "1" Usuario
 
+Municao --|> Produto
+
 Arma --|> Produto
 Arma "1" *--> "1" TipoArma
+Arma "1" *--> "1" TipoTiro
+Arma "1" *--> "1" Acabamento
+
+Produto "*" --> "1" Material
+Produto "*" --> "1" Categoria
+Produto "*" --> "1" Calibre
+
+Categoria --|> SubCategoria
+
 
 @enduml
