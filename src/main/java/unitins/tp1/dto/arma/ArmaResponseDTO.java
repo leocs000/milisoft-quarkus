@@ -2,9 +2,12 @@ package unitins.tp1.dto.arma;
 
 import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
 import unitins.tp1.dto.calibre.CalibreResponseDTO;
+import unitins.tp1.dto.material.MaterialResponseDTO;
+import unitins.tp1.dto.tipoTiro.TipoTiroResponseDTO;
 import unitins.tp1.model.Acabamento;
 import unitins.tp1.model.Arma;
 import unitins.tp1.model.TipoArma;
+import unitins.tp1.model.converterjpa.TipoArmaConverter;
 
 public record ArmaResponseDTO(
     Long id,
@@ -12,16 +15,18 @@ public record ArmaResponseDTO(
     String descricao,
     Double preco,
     int qtdNoEstoque,
-    TipoArma tipo,
-    String marca,
-    AcabamentoResponseDTO acabamento,
-    CalibreResponseDTO calibre,
-    String comprimentoDoCano,
-    int capacidadeDeTiro,
-    String numeroSigma,
-    String numeroDaArma,
+    String fabricante,
     String modelo,
-    String rna,
+//    CategoriaResponseDTO categoria,
+    MaterialResponseDTO material,
+    CalibreResponseDTO calibre,
+    TipoArma tipo,
+    AcabamentoResponseDTO acabamento,
+    Double peso,
+    String propulsor,
+    TipoTiroResponseDTO tipoTiro,
+    String velocidade,
+    int capacidadeDeTiro,
     String nomeImagem
     ){
         public static ArmaResponseDTO valueOf(Arma arma){
@@ -31,16 +36,17 @@ public record ArmaResponseDTO(
                 arma.getDescricao(),
                 arma.getPreco(),
                 arma.getQtdNoEstoque(),
-                arma.getTipo(),
-                arma.getMarca(),
-                AcabamentoResponseDTO.valueOf(arma.getAcabamento()),
-                CalibreResponseDTO.valueOf(arma.getCalibre()),
-                arma.getComprimentoDoCano(),
-                arma.getCapacidadeDeTiro(),
-                arma.getNumeroSigma(),
-                arma.getNumeroDaArma(),
+                arma.getFabricante(),
                 arma.getModelo(),
-                arma.getRna(),
+                MaterialResponseDTO.valueOf(arma.getMaterial()),
+                CalibreResponseDTO.valueOf(arma.getCalibre()),
+                arma.getTipo(),
+                AcabamentoResponseDTO.valueOf(arma.getAcabamento()),
+                arma.getPeso(),
+                arma.getPropulsor(),
+                TipoTiroResponseDTO.valueOf(arma.getTipoTiro()),
+                arma.getVelocidade(),
+                arma.getCapacidadeDeTiro(),
                 arma.getNomeImagem());                  
     }
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class TipoTiro {
+public class TipoTiro extends DefaultEntity{
     @Column(length = 60)
     private String descricao;
 }

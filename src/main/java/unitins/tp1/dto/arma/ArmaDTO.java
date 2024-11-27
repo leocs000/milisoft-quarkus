@@ -29,16 +29,14 @@ public class ArmaDTO extends ProdutoDTO {
     String velocidade;
     @NotNull(message = "insira o 'tipo de tiro' corretamente")
     Long idtipoTiro;
-    @NotNull(message = "insira o 'tipo de municao suportado' corretamente")
-    Long idtipoMunicao;
 
 
     public ArmaDTO(@NotBlank(message = "insira o nome corretamente") String nome,
             @NotNull(message = "insira a qtdNoEstoque corretamente") int qtdNoEstoque,
             @NotNull(message = "insira o preco corretamente") double preco,
-            @NotNull(message = "insira o Fabricante corretamente") String Fabricante,
+            @NotNull(message = "insira o Fabricante corretamente") String fabricante,
             @NotNull(message = "insira o modelo corretamente") String modelo,
-            @NotNull(message = "insira a categoria corretamente") Long idCategoria,
+//            @NotNull(message = "insira a categoria corretamente") Long idCategoria,
             @NotNull(message = "insira o preco corretamente") Long idMaterial,
             @NotNull(message = "insira o preco corretamente") Long idCalibre,
             @NotBlank(message = "insira a descrição corretamente") String descricao,
@@ -47,12 +45,14 @@ public class ArmaDTO extends ProdutoDTO {
             @NotNull(message = "insira o 'capacidade de tiro' corretamente") int capacidadeDeTiro,
             @NotNull(message = "insira o tipo de 'Propulsor' corretamente") String propulsor,
             @NotNull(message = "insira a 'Velocidade' corretamente") String velocidade,
-            @NotNull(message = "insira o 'tipo de tiro' corretamente") Long idtipoTiro,
-            @NotNull(message = "insira o 'tipo de municao suportado' corretamente") Long idtipoMunicao) {
-        super(nome, qtdNoEstoque, preco, descricao);
+            @NotNull(message = "insira o 'tipo de tiro' corretamente") Long idtipoTiro) {
+        super(nome, qtdNoEstoque, preco, descricao, fabricante, modelo, /*idCategoria,*/ idMaterial, idCalibre);
         this.tipo = tipo;
         this.idAcabamento = idAcabamento;
         this.capacidadeDeTiro = capacidadeDeTiro;
+        this.propulsor = propulsor;
+        this.velocidade = velocidade;
+        this.idtipoTiro = idtipoTiro;
     }
 
     
