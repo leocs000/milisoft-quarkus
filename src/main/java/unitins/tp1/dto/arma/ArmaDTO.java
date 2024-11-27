@@ -1,11 +1,17 @@
 package unitins.tp1.dto.arma;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import unitins.tp1.model.Acabamento;
+import unitins.tp1.model.Municao;
+import unitins.tp1.model.TipoArma;
+import unitins.tp1.model.TipoTiro;
 
 @Getter
 @Setter
@@ -13,48 +19,40 @@ import unitins.tp1.model.Acabamento;
 public class ArmaDTO extends ProdutoDTO {
     @NotNull(message = "insira o tipo de arma corretamente")
     int tipo;
-    @NotBlank(message = "insira o 'marca' corretamente")
-    String marca;
     @NotBlank(message = "insira o 'acabamento' corretamente")
     Long idAcabamento;
-    @NotBlank(message = "insira o 'calibre' corretamente")
-    Long idCalibre;
-    @NotBlank(message = "insira o 'comprimento do cano' corretamente")
-    String comprimentoDoCano;
     @NotNull(message = "insira o 'capacidade de tiro' corretamente")
     int capacidadeDeTiro;
-    @NotBlank(message = "insira o 'nomero sigma' corretamente")
-    String numeroSigma;
-    @NotBlank(message = "insira o 'numero da arma' corretamente")
-    String numeroDaArma;
-    @NotBlank(message = "insira o 'modelo' corretamente")
-    String modelo;
-    String rna;
+    @NotNull(message = "insira o tipo de 'Propulsor' corretamente")
+    String propulsor;
+    @NotNull(message = "insira a 'Velocidade' corretamente")
+    String velocidade;
+    @NotNull(message = "insira o 'tipo de tiro' corretamente")
+    Long idtipoTiro;
+    @NotNull(message = "insira o 'tipo de municao suportado' corretamente")
+    Long idtipoMunicao;
+
 
     public ArmaDTO(@NotBlank(message = "insira o nome corretamente") String nome,
             @NotNull(message = "insira a qtdNoEstoque corretamente") int qtdNoEstoque,
             @NotNull(message = "insira o preco corretamente") double preco,
+            @NotNull(message = "insira o Fabricante corretamente") String Fabricante,
+            @NotNull(message = "insira o modelo corretamente") String modelo,
+            @NotNull(message = "insira a categoria corretamente") Long idCategoria,
+            @NotNull(message = "insira o preco corretamente") Long idMaterial,
+            @NotNull(message = "insira o preco corretamente") Long idCalibre,
             @NotBlank(message = "insira a descrição corretamente") String descricao,
             @NotNull(message = "insira o tipo de arma corretamente") int tipo,
-            @NotBlank(message = "insira o 'marca' corretamente") String marca,
             @NotBlank(message = "insira o 'acabamento' corretamente") Long idAcabamento,
-            @NotBlank(message = "insira o 'calibre' corretamente") Long idCalibre,
-            @NotBlank(message = "insira o 'comprimento do cano' corretamente") String comprimentoDoCano,
             @NotNull(message = "insira o 'capacidade de tiro' corretamente") int capacidadeDeTiro,
-            @NotBlank(message = "insira o 'nomero sigma' corretamente") String numeroSigma,
-            @NotBlank(message = "insira o 'numero da arma' corretamente") String numeroDaArma,
-            @NotBlank(message = "insira o 'modelo' corretamente") String modelo, String rna) {
+            @NotNull(message = "insira o tipo de 'Propulsor' corretamente") String propulsor,
+            @NotNull(message = "insira a 'Velocidade' corretamente") String velocidade,
+            @NotNull(message = "insira o 'tipo de tiro' corretamente") Long idtipoTiro,
+            @NotNull(message = "insira o 'tipo de municao suportado' corretamente") Long idtipoMunicao) {
         super(nome, qtdNoEstoque, preco, descricao);
         this.tipo = tipo;
-        this.marca = marca;
         this.idAcabamento = idAcabamento;
-        this.idCalibre = idCalibre;
-        this.comprimentoDoCano = comprimentoDoCano;
         this.capacidadeDeTiro = capacidadeDeTiro;
-        this.numeroSigma = numeroSigma;
-        this.numeroDaArma = numeroDaArma;
-        this.modelo = modelo;
-        this.rna = rna;
     }
 
     

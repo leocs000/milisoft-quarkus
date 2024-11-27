@@ -24,7 +24,7 @@ public class Arma extends Produto{
     private int capacidadeDeTiro;
     
     @Column
-    private String tipoPropulsor;
+    private String propulsor;
 
     @Column
     private String velocidade;
