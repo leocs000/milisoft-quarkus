@@ -30,19 +30,16 @@ public class ArmaServiceImpl implements ArmaService {
     public ArmaResponseDTO insert(ArmaDTO dto) {
         Arma novaArma = new Arma();
             novaArma.setNome(dto.getNome());
-            novaArma.setDescricao(dto.getDescricao());
-            novaArma.setPreco(dto.getPreco());
             novaArma.setQtdNoEstoque(dto.getQtdNoEstoque());
+            novaArma.setPreco(dto.getPreco());
+            novaArma.setDescricao(dto.getDescricao());
+            novaArma.setFabricante(dto.getFabricante());
+            novaArma.setModelo(dto.getModelo());
+            novaArma.setPeso(dto.getPeso());
             novaArma.setTipo(TipoArma.valueOf(dto.getTipo()));
             novaArma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
             novaArma.setCalibre(calibreService.findById(dto.getIdCalibre()));
             novaArma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
-            novaArma.setComprimentoDoCano(dto.getComprimentoDoCano());
-            novaArma.setMarca(dto.getMarca());
-            novaArma.setModelo(dto.getModelo());
-            novaArma.setNumeroDaArma(dto.getNumeroDaArma());
-            novaArma.setNumeroSigma(dto.getNumeroSigma());
-            novaArma.setRna(dto.getRna());
 
         repository.persist(novaArma);
 
@@ -63,12 +60,8 @@ public class ArmaServiceImpl implements ArmaService {
             arma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
             arma.setCalibre(calibreService.findById(dto.getIdCalibre()));
             arma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
-            arma.setComprimentoDoCano(dto.getComprimentoDoCano());
-            arma.setMarca(dto.getMarca());
+            arma.setFabricante(dto.getFabricante());
             arma.setModelo(dto.getModelo());
-            arma.setNumeroDaArma(dto.getNumeroDaArma());
-            arma.setNumeroSigma(dto.getNumeroSigma());
-            arma.setRna(dto.getRna());
         } else
             throw new NotFoundException();
         return ArmaResponseDTO.valueOf(arma);

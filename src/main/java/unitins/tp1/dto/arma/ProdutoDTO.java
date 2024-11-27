@@ -21,6 +21,7 @@ public class ProdutoDTO {
     String descricao;
     String fabricante;
     String modelo;
+    Double peso;
 //    Long idCategoria;
     Long idMaterial;
     Long idCalibre;
@@ -31,6 +32,7 @@ public class ProdutoDTO {
                       @NotBlank(message = "insira a descrição corretamente") String descricao,
                       String fabricante,
                       String modelo,
+                      Double peso,
   //                    Long idCategoria,
                       Long idMaterial,
                       Long idCalibre) {
@@ -40,6 +42,7 @@ public class ProdutoDTO {
         this.descricao = descricao;
         this.fabricante = fabricante;
         this.modelo = modelo;
+        this.peso = peso;
 //        this.idCategoria = idCategoria;
         this.idMaterial = idMaterial;
         this.idCalibre = idCalibre;
