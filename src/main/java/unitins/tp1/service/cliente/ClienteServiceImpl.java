@@ -10,6 +10,7 @@ import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.PATCH;
 import unitins.tp1.model.Endereco;
@@ -50,7 +51,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     @Transactional
-    public ClienteResponseDTO insert(ClienteDTO dto) {
+    public ClienteResponseDTO insert(@Valid ClienteDTO dto) {
         validarEmailCliente(dto.email());
         validarCpfCliente(dto.cpf());
         validarLoginCliente(dto.login());
@@ -161,14 +162,17 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteResponseDTO> findByNome(String nome) {
-        return clienteRepository.findByNome(nome).stream()
+    public List<ClienteResponseDTO> findByNome(String nome, int page, int pageSize) {
+        List<Cliente> list = clienteRepository.findByNome(nome).page(page, pageSize).list();
+        
+        return list.stream()
                 .map(e -> ClienteResponseDTO.valueOf(e)).toList();
     }
 
     @Override
-    public List<ClienteResponseDTO> findByAll() {
-        return clienteRepository.listAll().stream()
+    public List<ClienteResponseDTO> findByAll(int page, int pageSize) {
+        List<Cliente> list = clienteRepository.findAll().page(page, pageSize).list();
+        return list.stream()
                 .map(e -> ClienteResponseDTO.valueOf(e)).toList();
     }
 
@@ -176,6 +180,16 @@ public class ClienteServiceImpl implements ClienteService {
     public ClienteResponseDTO findByUsuario(String login) {
         return ClienteResponseDTO.valueOf(clienteRepository.findByLogin(login));
    }
+
+   @Override
+    public long count() {
+        return clienteRepository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return clienteRepository.findByNome(nome).count();
+    }
 
     @Override
     @Transactional
