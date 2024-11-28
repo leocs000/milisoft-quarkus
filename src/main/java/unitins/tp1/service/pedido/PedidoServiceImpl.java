@@ -99,16 +99,16 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<PedidoResponseDTO> findAll() {
-        return pedidoRepository
-                .listAll()
-                .stream()
+    public List<PedidoResponseDTO> findAll(int page, int pageSize) {
+        List<Pedido> list = pedidoRepository.findAll().page(page, pageSize).list();
+        
+        return list.stream()
                 .map(e -> PedidoResponseDTO.valueOf(e)).toList();
     }
 
     @Override
-    public List<PedidoResponseDTO> findByCliente(Long idCliente) {
-        return pedidoRepository.findByCliente(idCliente).stream()
+    public List<PedidoResponseDTO> findByCliente(Long idCliente, int page, int pageSize) {
+        return pedidoRepository.findByCliente(idCliente).page(page, pageSize).stream()
                 .map(e -> PedidoResponseDTO.valueOf(e)).toList();
     }
 
@@ -138,9 +138,9 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     @Transactional
-    public List<PedidoResponseDTO> meusPedidos() {
+    public List<PedidoResponseDTO> meusPedidos(int page, int pageSize) {
         String login = jwt.getName();
-        List<PedidoResponseDTO> pedidos = pedidoRepository.find("cliente.usuario.login", login).stream()
+        List<PedidoResponseDTO> pedidos = pedidoRepository.find("cliente.usuario.login", login).page(page, pageSize).stream()
                 .map(e -> PedidoResponseDTO.valueOf(e)).toList();
 
         if (pedidos.isEmpty()) {

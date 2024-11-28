@@ -9,6 +9,7 @@ import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.ValidationException;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.PATCH;
@@ -16,6 +17,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -54,9 +56,11 @@ public class PedidoResource {
 
     @GET
 //    @RolesAllowed({ "User", "Admin" })
-    public Response findAll() {
+    public Response findAll( 
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
         LOG.info("Executando FindAll");
-        return Response.ok(pedidoService.findAll()).build();
+        return Response.ok(pedidoService.findAll(page, pageSize)).build();
     }
 
     @GET
@@ -70,8 +74,12 @@ public class PedidoResource {
     @GET
     @Path("/search/cliente/{id}")
 //    @RolesAllowed({ "User", "Admin" })
-    public Response findByCliente(@PathParam("id") Long idCliente) {
-        return Response.ok(pedidoService.findByCliente(idCliente)).build();
+    public Response findByCliente(
+            @PathParam("id") Long idCliente,
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
+
+        return Response.ok(pedidoService.findByCliente(idCliente, page, pageSize)).build();
     }
 
     @PATCH
@@ -86,10 +94,13 @@ public class PedidoResource {
     @GET
     @Path("/meusPedidos")
 //    @RolesAllowed({"User"})
-    public Response meusPedidos(){
+    public Response meusPedidos( 
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize){
+
         LOG.info("Executando o método meusPedidos() de pedido. ");
         try {
-            return Response.ok(pedidoService.meusPedidos()).build();
+            return Response.ok(pedidoService.meusPedidos(page, pageSize)).build();
         } catch (NotFoundException e) {
             return Response.status(Status.NOT_FOUND).entity(e.getMessage()).build();
         }
