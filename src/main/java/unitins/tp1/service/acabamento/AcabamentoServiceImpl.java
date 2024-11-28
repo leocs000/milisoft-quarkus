@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.NotFoundException;
 import unitins.tp1.dto.acabamento.AcabamentoDTO;
 import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
@@ -19,7 +20,7 @@ public class AcabamentoServiceImpl implements AcabamentoService {
     AcabamentoRepository repository;
 
     @Override
-    public AcabamentoResponseDTO insert(AcabamentoDTO dto) {
+    public AcabamentoResponseDTO insert(@Valid AcabamentoDTO dto) {
         Acabamento novoAcabamento = new Acabamento();
         novoAcabamento.setMaterial(dto.material());
         repository.persist(novoAcabamento);
@@ -52,15 +53,26 @@ public class AcabamentoServiceImpl implements AcabamentoService {
     }
 
     @Override
-    public List<AcabamentoResponseDTO> findByNome(String nome) {
-        return repository.findByNome(nome).stream()
+    public List<AcabamentoResponseDTO> findByNome(String nome, int page, int pageSize) {
+        List<Acabamento> list = repository.findByNome(nome).page(page, pageSize).list();
+        return list.stream()
                 .map(e -> AcabamentoResponseDTO.valueOf(e)).toList();
     }
 
     @Override
-    public List<AcabamentoResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> AcabamentoResponseDTO.valueOf(e)).toList();
+    public List<AcabamentoResponseDTO> findByAll(int page, int pageSize) {
+        List<Acabamento> list = repository.findAll().page(page, pageSize).list();
+        return list.stream().map(e -> AcabamentoResponseDTO.valueOf(e)).toList();
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return repository.findByNome(nome).count();
     }
 
 }

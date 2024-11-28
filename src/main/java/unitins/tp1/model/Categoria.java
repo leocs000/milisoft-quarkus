@@ -7,9 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 public class Categoria extends DefaultEntity{
 
-    @Column(length = 60)
+//    @Column(length = 60)
     private String descricao;
 }

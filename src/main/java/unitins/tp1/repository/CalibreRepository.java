@@ -9,6 +9,6 @@ import unitins.tp1.model.Calibre;
 @ApplicationScoped
 public class CalibreRepository implements PanacheRepository<Calibre>{
     public List<Calibre> findByCalibre(String calibre) {
-        return find("UPPER(material) LIKE UPPER(?1)", "%" + calibre + "%").list();
+        return find("UPPER(calibre) LIKE UPPER(?1)", "%" + calibre + "%").list();
     }
 }

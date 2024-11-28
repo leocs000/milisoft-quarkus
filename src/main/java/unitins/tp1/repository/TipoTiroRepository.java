@@ -9,6 +9,6 @@ import unitins.tp1.model.TipoTiro;
 @ApplicationScoped
 public class TipoTiroRepository implements PanacheRepository<TipoTiro>{
     public List<TipoTiro> findByNome(String nome){
-        return find("UPPER(material) LIKE UPPER(?1)", "%" + nome + "%").list();
+        return find("UPPER(descricao) LIKE UPPER(?1)", "%" + nome + "%").list();
     }
 }

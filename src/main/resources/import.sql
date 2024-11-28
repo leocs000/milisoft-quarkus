@@ -41,27 +41,82 @@ VALUES
     ('Madeira'),
     ('Cromado'),
     ('Ouro'),
-    ('Diamante'); 
+    ('Diamante'),
+    ('Prata'),
+    ('Bronze'),
+    ('Níquel'),
+    ('Latão'),
+    ('Aço escovado'),
+    ('Anodizado'),
+    ('Pintura fosca'),
+    ('Pintura brilhante'),
+    ('Texturizado'),
+    ('Envernizado'),
+    ('PVD');
 
 INSERT INTO calibre(calibre)
 VALUES
     ('.357 Magnum'),
     ('5.56mm'),
     ('9mm'),
-    ('7.62mm NATO');    
+    ('7.62mm NATO'),
+    ('.45 ACP'),
+    ('.40 S&W'),
+    ('.22 LR'),
+    ('.308 Winchester'),
+    ('.50 BMG'),
+    ('6.5mm Creedmoor'),
+    ('10mm Auto'),
+    ('.380 ACP'),
+    ('.44 Magnum'),
+    ('.223 Remington'),
+    ('.300 Blackout');
+
+INSERT INTO material(material)
+VALUES
+    ('Madeira'),
+    ('Polímero'),
+    ('Ferro'),
+    ('Fibra de carbono'),
+    ('Alumínio'),
+    ('Aço inoxidável'),
+    ('Plástico ABS'),
+    ('Nylon'),
+    ('Liga de zinco'),
+    ('Fibra de vidro'),
+    ('Titânio'),
+    ('Latão'),
+    ('Cobre'),
+    ('Magnésio'),
+    ('Cerâmica');
+
+INSERT INTO tipo_tiro(descricao)
+VALUES
+    ('Automático'),
+    ('Semiautomático'),
+    ('Repetição'),
+    ('Único'),
+    ('Rajada'),
+    ('Tiro a Tiro'),
+    ('Full Auto'),
+    ('Burst'),
+    ('Manual'),
+    ('Híbrido');   
 
 INSERT INTO arma(
-	capacidadedetiro, preco, qtdnoestoque, tipo_arma, modelo, numerosigma, comprimentodocano,
-    id_acabamento, marca, nome, descricao, id_calibre, numerodaarma, registro_nacional_armas)
+    nome, qtdnoestoque, preco, descricao, fabricante, modelo, peso, id_material, id_calibre,
+    tipo_arma, id_acabamento, capacidadedetiro, propulsor, velocidade, id_tipoTiro)
 VALUES
-    (15, 2000.00, 30, 1, 'Smith & Wesson Model 686', 'SW686-001', '6"', 1, 'Smith & Wesson', 'Revólver .357 Magnum', 'Um revólver clássico, conhecido por sua confiabilidade e precisão.', 1, 'SW001', 'RN001'),
-    (30, 1500.00, 20, 4, 'Colt AR-15', 'COLTAR15-002', '16"', 1, 'Colt', 'Rifle AR-15', 'Um rifle semiautomático, amplamente utilizado para esportes de tiro e caça.', 2, 'COLT002', 'RN002'),
-    (8, 800.00, 25, 2, 'Glock 19', 'GLOCK19-003', '4"', 2, 'Glock', 'Pistola Glock 19', 'Uma pistola compacta, popular entre forças policiais e civis.', 4, 'GLK003', 'RN003'),
-    (5, 1200.00, 15, 7, 'Remington 870', 'REM870-004', '24"', 1, 'Remington', 'Escopeta Remington 870', 'Uma escopeta de bombeamento clássica, amplamente utilizada para caça e defesa.', 3, 'REM004', 'RN004'),
-    (20, 1800.00, 10, 5, 'Springfield M1A', 'SPFM1A-005', '18"', 3, 'Springfield Armory', 'Carabina Springfield M1A', 'Uma carabina semiautomática, derivada do M14, conhecida por sua precisão.', 4, 'SPF005', 'RN005'),
-    (25, 2500.00, 12, 6, 'Heckler & Koch MP5', 'HKMP5-006', '10"', 2, 'Heckler & Koch', 'Submetralhadora MP5', 'Uma submetralhadora compacta, amplamente utilizada por forças policiais e militares em todo o mundo.', 1, 'HCK006', 'RN006'),
-    (30, 3500.00, 8, 8, 'FN SCAR', 'FNSCAR-007', '20"', 2, 'FN Herstal', 'Fuzil FN SCAR', 'Um fuzil de assalto moderno e versátil, utilizado por forças especiais em todo o mundo.', 2, 'FNS007', 'RN007'),
-    (6, 1000.00, 18, 1, 'Smith & Wesson Model 637', 'SW637-008', '4"', 3, 'Smith & Wesson', 'Revólver .38 Special', 'Um revólver compacto, ideal para uso como arma de backup ou defesa pessoal.', 3, 'SW002', 'RN008');
+    ('Rifle M4A1', 15, 1200.00, 'Rifle de airsoft com alta precisão', 'Tokyo Marui', 'M4A1', 3.5, 1, 1, 1, 1, 30, 'Elétrico', '400', 1),
+    ('Pistola Glock 17', 25, 800.00, 'Pistola de airsoft compacta e leve', 'WE Tech', 'G17', 0.7, 2, 2, 2, 2, 20, 'Gás', '300', 2),
+    ('Sniper L96', 10, 1500.00, 'Rifle sniper de alta precisão', 'Well', 'L96', 4.5, 3, 3, 3, 3, 10, 'Mola', 450, 3),
+    ('Shotgun M870', 8, 900.00, 'Espingarda de airsoft com ação de bombeamento', 'CYMA', 'M870', 3.0, 4, 4, 4, 4, 8, 'Mola', '350', 4),
+    ('SMG MP5', 20, 1100.00, 'Submetralhadora de airsoft compacta', 'Classic Army', 'MP5', 2.5, 5, 5, 5, 5, 25, 'Elétrico', '380', 5),
+    ('Revolver Colt Python', 12, 700.00, 'Revolver de airsoft com design clássico', 'KWC', 'Python', 1.2, 6, 6, 6, 6, 6, 'CO2', '320', 6),
+    ('Rifle AK47', 18, 1300.00, 'Rifle de airsoft robusto e durável', 'CYMA', 'AK47', 3.8, 7, 7, 7, 7, 30, 'Elétrico', '410', 7),
+    ('Pistola Desert Eagle', 10, 950.00, 'Pistola de airsoft com grande impacto', 'Tokyo Marui', 'Desert Eagle', 1.5, 8, 8, 8, 8, 7, 'Gás', '330', 8),
+    ('Rifle G36C', 14, 1150.00, 'Rifle de airsoft compacto e versátil', 'Umarex', 'G36C', 2.9, 9, 9, 7, 9, 25, 'Elétrico', '390', 9),
+    ('Pistola Beretta M9', 22, 850.00, 'Pistola de airsoft com design militar', 'WE Tech', 'M9', 0.9, 10, 10, 6, 10, 15, 'Gás', '310', 10);
 
 
 INSERT INTO funcionario (matricula, cpf, telefone, nome, email)

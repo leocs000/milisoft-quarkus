@@ -30,7 +30,7 @@ public class Arma extends Produto{
     private String velocidade;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipoTriro")
+    @JoinColumn(name = "id_tipoTiro")
     private TipoTiro tipoTiro;
 
     // @ManyToOne

@@ -7,9 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 public class Municao extends Produto{
 
-    @Column(length = 20)
+//    @Column(length = 20)
     private String cor;
 }
