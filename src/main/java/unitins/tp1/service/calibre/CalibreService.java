@@ -2,15 +2,13 @@ package unitins.tp1.service.calibre;
 
 import java.util.List;
 
-import unitins.tp1.dto.acabamento.AcabamentoDTO;
-import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
+import jakarta.validation.Valid;
 import unitins.tp1.dto.calibre.CalibreDTO;
 import unitins.tp1.dto.calibre.CalibreResponseDTO;
-import unitins.tp1.model.Acabamento;
 import unitins.tp1.model.Calibre;
 
 public interface CalibreService {
-    public CalibreResponseDTO insert(CalibreDTO dto);
+    public CalibreResponseDTO insert(@Valid CalibreDTO dto);
 
     public CalibreResponseDTO update(CalibreDTO dto, Long id);
 
@@ -18,7 +16,11 @@ public interface CalibreService {
 
     public Calibre findById(Long id);
     
-    public List<CalibreResponseDTO> findByNome(String nome);
+    public List<CalibreResponseDTO> findByNome(String nome, int page, int pageSize);
 
-    public List<CalibreResponseDTO> findByAll();
+    public List<CalibreResponseDTO> findByAll(int page, int pageSize);
+
+    public long count();
+
+    public long countByNome(String nome);
 }

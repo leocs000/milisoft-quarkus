@@ -56,16 +56,29 @@ public class CalibreServiceImpl implements CalibreService{
     }
 
     @Override
-    public List<CalibreResponseDTO> findByNome(String calibre) {
-        return repository.findByCalibre(calibre).stream()
+    public List<CalibreResponseDTO> findByNome(String calibre, int page, int pageSize) {
+        List<Calibre> list = repository.findByCalibre(calibre).page(page, pageSize).list();
+        
+        return list.stream()
         .map(e -> CalibreResponseDTO.valueOf(e)).toList();
     }
 
     @Override
-    public List<CalibreResponseDTO> findByAll() {
-        return repository.listAll().stream()
+    public List<CalibreResponseDTO> findByAll(int page, int pageSize) {
+        List<Calibre> list = repository.findAll().page(page, pageSize).list();
+
+        return list.stream()
                 .map(e -> CalibreResponseDTO.valueOf(e)).toList();
     }
 
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String calibre) {
+        return repository.findByCalibre(calibre).count();
+    }
 
 }

@@ -2,6 +2,7 @@ package unitins.tp1.service.cliente;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import unitins.tp1.dto.cliente.ClienteDTO;
 import unitins.tp1.dto.cliente.ClienteResponseDTO;
 import unitins.tp1.dto.endereco.EnderecoDTO;
@@ -11,7 +12,7 @@ import unitins.tp1.dto.endereco.EnderecoResponseDTO;
 
 public interface ClienteService {
     
-    public ClienteResponseDTO insert(ClienteDTO dto);
+    public ClienteResponseDTO insert(@Valid ClienteDTO dto);
 
     public ClienteResponseDTO update(ClienteDTO dto, Long id);
     public EnderecoResponseDTO insetEndereco(EnderecoDTO dto, Long id);

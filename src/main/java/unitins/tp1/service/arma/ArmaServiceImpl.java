@@ -103,18 +103,19 @@ public class ArmaServiceImpl implements ArmaService {
     }
 
     @Override
-    public List<ArmaResponseDTO> findByNome(String nome) {
+    public List<ArmaResponseDTO> findByNome(String nome, int page, int pageSize) {
         if(nome != null || nome == ""){
-        return repository.findByNome(nome).stream()
-            .map(p -> ArmaResponseDTO.valueOf(p)).toList();
+            List<Arma> list = repository.findByNome(nome).page(page, pageSize).list();
+
+            return list.stream().map(p -> ArmaResponseDTO.valueOf(p)).toList();
         }
         throw new NotFoundException("Nome não encontrado!");
     }
 
     @Override
-    public List<ArmaResponseDTO> findByAll() {
-        return repository.listAll().stream()
-            .map(p -> ArmaResponseDTO.valueOf(p)).toList();
+    public List<ArmaResponseDTO> findByAll(int page, int pageSize) {
+        List<Arma> list = repository.findAll().page(page, pageSize).list();
+        return list.stream().map(p -> ArmaResponseDTO.valueOf(p)).toList();
     }
 
     @Override
@@ -122,6 +123,16 @@ public class ArmaServiceImpl implements ArmaService {
         Arma arma = repository.findById(id);
         arma.setNomeImagem(nomeImagem);
         return ArmaResponseDTO.valueOf(arma);
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return repository.findByNome(nome).count();
     }
     
 }
