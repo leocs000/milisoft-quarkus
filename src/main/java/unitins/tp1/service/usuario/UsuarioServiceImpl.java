@@ -106,8 +106,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<UsuarioResponseDTO> findByNome(String login) {
-        List<Usuario> usuarios = repository.find("UPPER(login) LIKE UPPER(?1)", "%" + login + "%").list();
+    public List<UsuarioResponseDTO> findByNome(String login, int page, int pageSize) {
+        List<Usuario> usuarios = repository.find("UPPER(login) LIKE UPPER(?1)", "%" + login + "%").page(page, pageSize).list();
         // Converte a lista de usuários para uma lista de DTOs de resposta
         return usuarios.stream()
                 .map(UsuarioResponseDTO::valueOf)
@@ -115,9 +115,22 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<UsuarioResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> UsuarioResponseDTO.valueOf(e)).toList();
+    public List<UsuarioResponseDTO> findByAll(int page, int pageSize) {
+        return repository.findAll()
+                         .page(page, pageSize)
+                         .stream()
+                         .map(e -> UsuarioResponseDTO.valueOf(e))
+                         .toList();
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return repository.findByNome(nome).count();
     }
 
     @Override

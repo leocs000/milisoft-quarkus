@@ -12,12 +12,14 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -61,9 +63,12 @@ public class UsuarioResource {
  
     @GET
 //    @RolesAllowed({"Admin"})
-    public Response findAll() {
+    public Response findAll(
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
+
         Log.info("Busca de todos os usuarios");
-        return Response.ok(service.findByAll()).build();
+        return Response.ok(service.findByAll(page, pageSize)).build();
     }
 
     @GET
@@ -77,9 +82,25 @@ public class UsuarioResource {
     @GET
     @Path("/search/login/{login}")
 //    @RolesAllowed({"Admin"})
-    public Response findByNome(@PathParam("login") String login) {
+    public Response findByNome(
+            @PathParam("login") String login,
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
+
         Log.info("Busca de um usuario especificado pelo login.");
-        return Response.ok(service.findByNome(login)).build();
+        return Response.ok(service.findByNome(login, page, pageSize)).build();
+    }
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return service.count();
+    }
+
+    @GET
+    @Path("/search/{nome}/count")
+    public long count(@PathParam("nome") String nome) {
+        return service.countByNome(nome);
     }
 
     @GET
