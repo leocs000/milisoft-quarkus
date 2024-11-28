@@ -110,4 +110,16 @@ public class FuncionarioResource {
         LOG.info("Buscando um funcionario expecifiando o nome.");
         return Response.ok(service.findByNome(nome, page, pageSize)).build();
     }
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return service.count();
+    }
+
+    @GET
+    @Path("/search/{nome}/count")
+    public long count(@PathParam("nome") String nome) {
+        return service.countByNome(nome);
+    }
 }
