@@ -8,11 +8,13 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import unitins.tp1.dto.endereco.EnderecoDTO;
@@ -50,9 +52,12 @@ public class EnderecoResource {
 
     @GET
 //    @RolesAllowed({"User","Admin"})
-    public Response findAll(){
+    public Response findAll(
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize){
+
         Log.info("Buscando todos os enderecos cadastrados.");
-        return Response.ok(service.findByAll()).build();
+        return Response.ok(service.findByAll(page, pageSize)).build();
     }
 
     @GET
@@ -66,8 +71,24 @@ public class EnderecoResource {
     @GET
     @Path("/search/nome/{nome}")
 //    @RolesAllowed({"User","Admin"})
-    public Response findByNome(@PathParam("nome") String nome){
+    public Response findByNome(
+            @PathParam("nome") String nome,
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("30") int pageSize){
+
         Log.info("Buscando um endereco expecificado pelo nome: "+nome);
-        return Response.ok(service.findByNome(nome)).build();
+        return Response.ok(service.findByNome(nome, page, pageSize)).build();
+    }
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return service.count();
+    }
+
+    @GET
+    @Path("/search/{nome}/count")
+    public long count(@PathParam("nome") String nome) {
+        return service.countByNome(nome);
     }
 }

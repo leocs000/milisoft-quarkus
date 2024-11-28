@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
 import unitins.tp1.dto.endereco.EnderecoDTO;
 import unitins.tp1.dto.endereco.EnderecoResponseDTO;
+import unitins.tp1.model.Acabamento;
 import unitins.tp1.model.Endereco;
 import unitins.tp1.repository.ClienteRepository;
 import unitins.tp1.repository.EnderecoRepository;
@@ -68,15 +69,29 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public List<EnderecoResponseDTO> findByNome(String nome) {
-        return repository.findByNome(nome).stream()
+    public List<EnderecoResponseDTO> findByNome(String nome, int page, int pageSize) {
+        List<Endereco> list = repository.findByNome(nome).page(page, pageSize).list();
+        
+        return list.stream()
                 .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
     }
 
     @Override
-    public List<EnderecoResponseDTO> findByAll() {
-        return repository.listAll().stream()
+    public List<EnderecoResponseDTO> findByAll(int page, int pageSize) {
+        List<Endereco> list = repository.findAll().page(page, pageSize).list();
+
+        return list.stream()
                 .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return repository.findByNome(nome).count();
     }
 
 }
