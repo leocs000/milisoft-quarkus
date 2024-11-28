@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
 import unitins.tp1.dto.funcionario.FuncionarioDTO;
 import unitins.tp1.dto.funcionario.FuncionarioResponseDTO;
+import unitins.tp1.model.Acabamento;
 import unitins.tp1.model.Endereco;
 import unitins.tp1.model.Funcionario;
 import unitins.tp1.model.Usuario;
@@ -85,20 +86,36 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @Override
-    public List<FuncionarioResponseDTO> findByNome(String nome) {
-        return repository.findByNome(nome).stream()
+    public List<FuncionarioResponseDTO> findByNome(String nome, int page, int pageSize) {
+        List<Funcionario> list = repository.findByNome(nome).page(page, pageSize).list();
+
+        return list.stream()
             .map(n -> FuncionarioResponseDTO.valueOf(n)).toList();
     }
 
     @Override
-    public List<FuncionarioResponseDTO> findByAll() {
-        return repository.listAll().stream()
+    public List<FuncionarioResponseDTO> findByAll(int page, int pageSize) {
+        List<Funcionario> list = repository.findAll().page(page, pageSize).list();
+
+        return list.stream()
         .map(m -> FuncionarioResponseDTO.valueOf(m)).toList();
     }
 
     @Override
-    public List<FuncionarioResponseDTO> findByMatricula(String matricula) {
-        return repository.findByMatricula(matricula).stream()
+    public List<FuncionarioResponseDTO> findByMatricula(String matricula, int page, int pageSize) {
+        List<Funcionario> list = repository.findByMatricula(matricula).page(page, pageSize).list();
+
+        return list.stream()
             .map(m -> FuncionarioResponseDTO.valueOf(m)).toList();
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return repository.findByNome(nome).count();
     }
 }
