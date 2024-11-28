@@ -4,10 +4,8 @@ import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
 import unitins.tp1.dto.calibre.CalibreResponseDTO;
 import unitins.tp1.dto.material.MaterialResponseDTO;
 import unitins.tp1.dto.tipoTiro.TipoTiroResponseDTO;
-import unitins.tp1.model.Acabamento;
 import unitins.tp1.model.Arma;
 import unitins.tp1.model.TipoArma;
-import unitins.tp1.model.converterjpa.TipoArmaConverter;
 
 public record ArmaResponseDTO(
     Long id,

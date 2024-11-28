@@ -1,17 +1,10 @@
 package unitins.tp1.dto.arma;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import unitins.tp1.model.Acabamento;
-import unitins.tp1.model.Municao;
-import unitins.tp1.model.TipoArma;
-import unitins.tp1.model.TipoTiro;
 
 @Getter
 @Setter
@@ -36,6 +29,7 @@ public class ArmaDTO extends ProdutoDTO {
             @NotNull(message = "insira o preco corretamente") double preco,
             @NotNull(message = "insira o Fabricante corretamente") String fabricante,
             @NotNull(message = "insira o modelo corretamente") String modelo,
+            @NotNull(message = "insira o modelo corretamente") Double peso,
 //            @NotNull(message = "insira a categoria corretamente") Long idCategoria,
             @NotNull(message = "insira o preco corretamente") Long idMaterial,
             @NotNull(message = "insira o preco corretamente") Long idCalibre,
@@ -46,7 +40,7 @@ public class ArmaDTO extends ProdutoDTO {
             @NotNull(message = "insira o tipo de 'Propulsor' corretamente") String propulsor,
             @NotNull(message = "insira a 'Velocidade' corretamente") String velocidade,
             @NotNull(message = "insira o 'tipo de tiro' corretamente") Long idtipoTiro) {
-        super(nome, qtdNoEstoque, preco, descricao, fabricante, modelo, /*idCategoria,*/ idMaterial, idCalibre);
+        super(nome, qtdNoEstoque, preco, descricao, fabricante, modelo, peso, /*idCategoria,*/ idMaterial, idCalibre);
         this.tipo = tipo;
         this.idAcabamento = idAcabamento;
         this.capacidadeDeTiro = capacidadeDeTiro;

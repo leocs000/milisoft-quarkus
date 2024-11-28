@@ -11,8 +11,10 @@ import unitins.tp1.dto.arma.ArmaResponseDTO;
 import unitins.tp1.model.Arma;
 import unitins.tp1.model.TipoArma;
 import unitins.tp1.repository.ArmaRepository;
+import unitins.tp1.service.TipoTiro.TipoTiroService;
 import unitins.tp1.service.acabamento.AcabamentoService;
 import unitins.tp1.service.calibre.CalibreService;
+import unitins.tp1.service.material.MaterialService;
 
 @ApplicationScoped
 public class ArmaServiceImpl implements ArmaService {
@@ -25,6 +27,12 @@ public class ArmaServiceImpl implements ArmaService {
     @Inject
     CalibreService calibreService;
 
+    @Inject
+    MaterialService materialService;
+
+    @Inject
+    TipoTiroService tipoTiroService;
+
     @Override
     @Transactional
     public ArmaResponseDTO insert(ArmaDTO dto) {
@@ -36,10 +44,14 @@ public class ArmaServiceImpl implements ArmaService {
             novaArma.setFabricante(dto.getFabricante());
             novaArma.setModelo(dto.getModelo());
             novaArma.setPeso(dto.getPeso());
+            novaArma.setMaterial(materialService.findById(dto.getIdMaterial()));
+            novaArma.setCalibre(calibreService.findById(dto.getIdCalibre()));
             novaArma.setTipo(TipoArma.valueOf(dto.getTipo()));
             novaArma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
-            novaArma.setCalibre(calibreService.findById(dto.getIdCalibre()));
             novaArma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
+            novaArma.setPropulsor(dto.getPropulsor());
+            novaArma.setVelocidade(dto.getVelocidade());
+            novaArma.setTipoTiro(tipoTiroService.findById(dto.getIdtipoTiro()));
 
         repository.persist(novaArma);
 
@@ -53,15 +65,20 @@ public class ArmaServiceImpl implements ArmaService {
         Arma arma = (Arma) repository.findById(id);
         if (arma != null) {
             arma.setNome(dto.getNome());
-            arma.setDescricao(dto.getDescricao());
-            arma.setPreco(dto.getPreco());
             arma.setQtdNoEstoque(dto.getQtdNoEstoque());
-            arma.setTipo(TipoArma.valueOf(dto.getTipo()));
-            arma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
-            arma.setCalibre(calibreService.findById(dto.getIdCalibre()));
-            arma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
+            arma.setPreco(dto.getPreco());
+            arma.setDescricao(dto.getDescricao());
             arma.setFabricante(dto.getFabricante());
             arma.setModelo(dto.getModelo());
+            arma.setPeso(dto.getPeso());
+            arma.setMaterial(materialService.findById(dto.getIdMaterial()));
+            arma.setCalibre(calibreService.findById(dto.getIdCalibre()));
+            arma.setTipo(TipoArma.valueOf(dto.getTipo()));
+            arma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
+            arma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
+            arma.setPropulsor(dto.getPropulsor());
+            arma.setVelocidade(dto.getVelocidade());
+            arma.setTipoTiro(tipoTiroService.findById(dto.getIdtipoTiro()));
         } else
             throw new NotFoundException();
         return ArmaResponseDTO.valueOf(arma);

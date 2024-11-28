@@ -33,9 +33,9 @@ public class Produto extends DefaultEntity{
     @Column(length = 60)
     private Double peso;
 
-    @ManyToOne
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    // @ManyToOne
+    // @JoinColumn(name = "id_categoria")
+    // private Categoria categoria;
 
     
     @ManyToOne
