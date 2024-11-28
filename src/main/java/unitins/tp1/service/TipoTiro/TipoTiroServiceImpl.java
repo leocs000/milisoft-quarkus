@@ -53,15 +53,31 @@ public class TipoTiroServiceImpl implements TipoTiroService{
     }
 
     @Override
-    public List<TipoTiroResponseDTO> findByNome(String nome) {
-        return repository.findByNome(nome).stream()
-                .map(e -> TipoTiroResponseDTO.valueOf(e)).toList();
+    public List<TipoTiroResponseDTO> findByNome(String nome, int page, int pageSize) {
+        return repository.findByNome(nome)
+                         .page(page, pageSize)
+                         .stream()
+                         .map(e -> TipoTiroResponseDTO.valueOf(e))
+                         .toList();
     }
 
     @Override
-    public List<TipoTiroResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> TipoTiroResponseDTO.valueOf(e)).toList();
+    public List<TipoTiroResponseDTO> findByAll(int page, int pageSize) {
+        return repository.findAll()
+                         .page(page, pageSize)
+                         .stream()
+                         .map(e -> TipoTiroResponseDTO.valueOf(e))
+                         .toList();
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+    @Override
+    public long countByNome(String nome) {
+        return repository.findByNome(nome).count();
     }
 
 }
