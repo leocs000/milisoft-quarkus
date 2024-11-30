@@ -13,8 +13,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "arma")
 public class Arma extends Produto{
-    @Column(name="tipo_arma")
-    private TipoArma tipo;
+    @ManyToOne
+    @JoinColumn(name="id_tipoArma")
+    private TipoArma tipoArma;
     
     @ManyToOne
     @JoinColumn(name = "id_acabamento")

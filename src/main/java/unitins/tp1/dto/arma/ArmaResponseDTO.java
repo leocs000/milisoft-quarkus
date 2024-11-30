@@ -3,9 +3,10 @@ package unitins.tp1.dto.arma;
 import unitins.tp1.dto.acabamento.AcabamentoResponseDTO;
 import unitins.tp1.dto.calibre.CalibreResponseDTO;
 import unitins.tp1.dto.material.MaterialResponseDTO;
+import unitins.tp1.dto.tipoArma.TipoArmaResponseDTO;
 import unitins.tp1.dto.tipoTiro.TipoTiroResponseDTO;
 import unitins.tp1.model.Arma;
-import unitins.tp1.model.TipoArma;
+
 
 public record ArmaResponseDTO(
     Long id,
@@ -18,7 +19,7 @@ public record ArmaResponseDTO(
 //    CategoriaResponseDTO categoria,
     MaterialResponseDTO material,
     CalibreResponseDTO calibre,
-    TipoArma tipo,
+    TipoArmaResponseDTO tipo,
     AcabamentoResponseDTO acabamento,
     Double peso,
     String propulsor,
@@ -38,7 +39,7 @@ public record ArmaResponseDTO(
                 arma.getModelo(),
                 MaterialResponseDTO.valueOf(arma.getMaterial()),
                 CalibreResponseDTO.valueOf(arma.getCalibre()),
-                arma.getTipo(),
+                TipoArmaResponseDTO.valueOf(arma.getTipoArma()),
                 AcabamentoResponseDTO.valueOf(arma.getAcabamento()),
                 arma.getPeso(),
                 arma.getPropulsor(),

@@ -15,7 +15,6 @@ import unitins.tp1.dto.arma.ArmaDTO;
 import unitins.tp1.dto.arma.ArmaResponseDTO;
 import unitins.tp1.dto.usuario.LoginDTO;
 import unitins.tp1.dto.usuario.UsuarioResponseDTO;
-import unitins.tp1.model.TipoArma;
 import unitins.tp1.service.arma.ArmaService;
 import unitins.tp1.service.hash.HashService;
 import unitins.tp1.service.jwt.JwtService;

@@ -103,9 +103,28 @@ VALUES
     ('Manual'),
     ('Híbrido');   
 
+INSERT INTO tipo_arma(descricao)
+VALUES
+    ('Revolver'),
+    ('Pistola'),
+    ('Espingarda'),
+    ('Rifle'),
+    ('Carabina'),
+    ('Metralhadora'),
+    ('Escopeta'),
+    ('Fuzil'),
+    ('Submetralhadora'),
+    ('Lança-granadas'),
+    ('Arco e Flecha'),
+    ('Besta'),
+    ('Canhão'),
+    ('Lança-chamas'),
+    ('Bazuca');
+
+
 INSERT INTO arma(
     nome, qtdnoestoque, preco, descricao, fabricante, modelo, peso, id_material, id_calibre,
-    tipo_arma, id_acabamento, capacidadedetiro, propulsor, velocidade, id_tipoTiro)
+    id_tipoArma, id_acabamento, capacidadedetiro, propulsor, velocidade, id_tipoTiro)
 VALUES
     ('Rifle M4A1', 15, 1200.00, 'Rifle de airsoft com alta precisão', 'Tokyo Marui', 'M4A1', 3.5, 1, 1, 1, 1, 30, 'Elétrico', '400', 1),
     ('Pistola Glock 17', 25, 800.00, 'Pistola de airsoft compacta e leve', 'WE Tech', 'G17', 0.7, 2, 2, 2, 2, 20, 'Gás', '300', 2),

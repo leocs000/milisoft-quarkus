@@ -9,12 +9,13 @@ import jakarta.ws.rs.NotFoundException;
 import unitins.tp1.dto.arma.ArmaDTO;
 import unitins.tp1.dto.arma.ArmaResponseDTO;
 import unitins.tp1.model.Arma;
-import unitins.tp1.model.TipoArma;
 import unitins.tp1.repository.ArmaRepository;
 import unitins.tp1.service.TipoTiro.TipoTiroService;
 import unitins.tp1.service.acabamento.AcabamentoService;
 import unitins.tp1.service.calibre.CalibreService;
 import unitins.tp1.service.material.MaterialService;
+import unitins.tp1.service.tipoArma.TipoArmaService;
+
 
 @ApplicationScoped
 public class ArmaServiceImpl implements ArmaService {
@@ -33,6 +34,9 @@ public class ArmaServiceImpl implements ArmaService {
     @Inject
     TipoTiroService tipoTiroService;
 
+    @Inject
+    TipoArmaService tipoArmaService;
+
     @Override
     @Transactional
     public ArmaResponseDTO insert(ArmaDTO dto) {
@@ -46,7 +50,7 @@ public class ArmaServiceImpl implements ArmaService {
             novaArma.setPeso(dto.getPeso());
             novaArma.setMaterial(materialService.findById(dto.getIdMaterial()));
             novaArma.setCalibre(calibreService.findById(dto.getIdCalibre()));
-            novaArma.setTipo(TipoArma.valueOf(dto.getTipo()));
+            novaArma.setTipoArma(tipoArmaService.findById(dto.getTipo()));
             novaArma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
             novaArma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
             novaArma.setPropulsor(dto.getPropulsor());
@@ -61,7 +65,6 @@ public class ArmaServiceImpl implements ArmaService {
     @Override
     @Transactional
     public ArmaResponseDTO update(ArmaDTO dto, Long id) {
-
         Arma arma = (Arma) repository.findById(id);
         if (arma != null) {
             arma.setNome(dto.getNome());
@@ -73,7 +76,7 @@ public class ArmaServiceImpl implements ArmaService {
             arma.setPeso(dto.getPeso());
             arma.setMaterial(materialService.findById(dto.getIdMaterial()));
             arma.setCalibre(calibreService.findById(dto.getIdCalibre()));
-            arma.setTipo(TipoArma.valueOf(dto.getTipo()));
+            arma.setTipoArma(tipoArmaService.findById(dto.getTipo()));
             arma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
             arma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
             arma.setPropulsor(dto.getPropulsor());

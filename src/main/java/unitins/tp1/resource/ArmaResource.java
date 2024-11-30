@@ -60,6 +60,7 @@ public class ArmaResource {
 //    @RolesAllowed({"Admin"})
     public Response update(ArmaDTO dto, @PathParam("id") Long id) {
         try {
+            System.out.println("entrou aqui" + dto.getTipo());
             Log.info("Atualizando dados da arma: " + dto.getNome());
             ArmaResponseDTO updatedDTO = service.update(dto, id);
             return Response.ok(updatedDTO).build();
@@ -127,6 +128,7 @@ public class ArmaResource {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao buscar a arma pelo nome.").build();
         }
     }
+
 
     @PATCH
     @Path("/upload/imagem/{id}")
