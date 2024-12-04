@@ -50,7 +50,7 @@ public class ArmaServiceImpl implements ArmaService {
             novaArma.setPeso(dto.getPeso());
             novaArma.setMaterial(materialService.findById(dto.getIdMaterial()));
             novaArma.setCalibre(calibreService.findById(dto.getIdCalibre()));
-            novaArma.setTipoArma(tipoArmaService.findById(dto.getTipo()));
+            novaArma.setTipoArma(tipoArmaService.findById(dto.getIdTipoArma()));
             novaArma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
             novaArma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
             novaArma.setPropulsor(dto.getPropulsor());
@@ -76,7 +76,7 @@ public class ArmaServiceImpl implements ArmaService {
             arma.setPeso(dto.getPeso());
             arma.setMaterial(materialService.findById(dto.getIdMaterial()));
             arma.setCalibre(calibreService.findById(dto.getIdCalibre()));
-            arma.setTipoArma(tipoArmaService.findById(dto.getTipo()));
+            arma.setTipoArma(tipoArmaService.findById(dto.getIdTipoArma()));
             arma.setAcabamento(acabamentoService.findById(dto.getIdAcabamento()));
             arma.setCapacidadeDeTiro(dto.getCapacidadeDeTiro());
             arma.setPropulsor(dto.getPropulsor());

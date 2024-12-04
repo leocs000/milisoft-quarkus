@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(callSuper = true)
 public class ArmaDTO extends ProdutoDTO {
-    
-    Long tipo;
+    @NotNull(message = "insira o 'Tipo de Arma' corretamente")
+    Long idTipoArma;
     
     Long idAcabamento;
     @NotNull(message = "insira o 'capacidade de tiro' corretamente")
@@ -34,14 +34,14 @@ public class ArmaDTO extends ProdutoDTO {
             @NotNull(message = "insira o preco corretamente") Long idMaterial,
             @NotNull(message = "insira o preco corretamente") Long idCalibre,
             @NotBlank(message = "insira a descrição corretamente") String descricao,
-            @NotNull(message = "insira o tipo de arma corretamente") Long tipo,
+            @NotNull(message = "insira o tipo de arma corretamente") Long idTipoArma,
             @NotBlank(message = "insira o 'acabamento' corretamente") Long idAcabamento,
             @NotNull(message = "insira o 'capacidade de tiro' corretamente") int capacidadeDeTiro,
             @NotNull(message = "insira o tipo de 'Propulsor' corretamente") String propulsor,
             @NotNull(message = "insira a 'Velocidade' corretamente") String velocidade,
             @NotNull(message = "insira o 'tipo de tiro' corretamente") Long idtipoTiro) {
         super(nome, qtdNoEstoque, preco, descricao, fabricante, modelo, peso, /*idCategoria,*/ idMaterial, idCalibre);
-        this.tipo = tipo;
+        this.idTipoArma = idTipoArma;
         this.idAcabamento = idAcabamento;
         this.capacidadeDeTiro = capacidadeDeTiro;
         this.propulsor = propulsor;

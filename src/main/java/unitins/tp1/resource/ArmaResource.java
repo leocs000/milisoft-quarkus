@@ -60,7 +60,12 @@ public class ArmaResource {
 //    @RolesAllowed({"Admin"})
     public Response update(ArmaDTO dto, @PathParam("id") Long id) {
         try {
-            System.out.println("entrou aqui" + dto.getTipo());
+            System.out.println("entrou aqui" + dto.getIdTipoArma() + "\n" + id +
+                                               dto.getIdCalibre() + "\n" + 
+                                               dto.getIdAcabamento() +  "\n" + 
+                                               dto.getIdtipoTiro() +  "\n" + 
+                                               dto.getIdMaterial());
+                                               
             Log.info("Atualizando dados da arma: " + dto.getNome());
             ArmaResponseDTO updatedDTO = service.update(dto, id);
             return Response.ok(updatedDTO).build();
