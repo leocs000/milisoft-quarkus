@@ -47,6 +47,7 @@ public class ArmaDTO extends ProdutoDTO {
         this.propulsor = propulsor;
         this.velocidade = velocidade;
         this.idtipoTiro = idtipoTiro;
+
     }
 
     

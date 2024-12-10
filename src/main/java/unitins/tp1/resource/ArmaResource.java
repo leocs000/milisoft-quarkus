@@ -42,7 +42,7 @@ public class ArmaResource {
 
     
     @POST
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response insert(ArmaDTO dto) {
         try {
             Log.info("Cadastrando uma arma: " + dto.getNome());
@@ -57,7 +57,7 @@ public class ArmaResource {
     @PUT
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response update(ArmaDTO dto, @PathParam("id") Long id) {
         try {
             System.out.println("entrou aqui" + dto.getIdTipoArma() + "\n" + id +
@@ -78,7 +78,7 @@ public class ArmaResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response delete(@PathParam("id") Long id) {
         try {
             Log.info("Deletando a arma com ID: " + id);
@@ -91,7 +91,7 @@ public class ArmaResource {
     }
 
     @GET
-//    @RolesAllowed({"User", "Admin"})
+    @RolesAllowed({"User", "Admin"})
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
@@ -106,7 +106,7 @@ public class ArmaResource {
 
     @GET
     @Path("/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response findById(@PathParam("id") Long id) {
         try {
             Log.info("Buscando arma pelo ID: " + id);
@@ -119,7 +119,7 @@ public class ArmaResource {
 
     @GET
     @Path("/search/nome/{nome}")
-//    @RolesAllowed({"User", "Admin"})
+    @RolesAllowed({"User", "Admin"})
     public Response findByNome(
         @PathParam("nome") String nome,
         @QueryParam("page") @DefaultValue("0") int page,
@@ -137,7 +137,7 @@ public class ArmaResource {
 
     @PATCH
     @Path("/upload/imagem/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ImageForm form, @PathParam("id") Long id) {
         try {
@@ -156,7 +156,7 @@ public class ArmaResource {
 
     @GET
     @Path("/download/imagem/{nomeImagem}")
-//    @RolesAllowed({"User", "Admin"})
+    @RolesAllowed({"User", "Admin"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         try {

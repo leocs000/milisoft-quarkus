@@ -44,7 +44,7 @@ public class UsuarioResource {
     @PUT
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public Response update(UsuarioDTO dto, @PathParam("id") Long id) {
         Log.info("Fazendo update de um usuario.");
         service.update(dto, id);
@@ -54,7 +54,7 @@ public class UsuarioResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response delete(@PathParam("id") Long id) {
         Log.info("Deletando um usuario.");
         service.delete(id);
@@ -62,7 +62,7 @@ public class UsuarioResource {
     }
  
     @GET
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
@@ -81,7 +81,7 @@ public class UsuarioResource {
     
     @GET
     @Path("/search/login/{login}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response findByNome(
             @PathParam("login") String login,
             @QueryParam("page") @DefaultValue("0") int page,
@@ -105,7 +105,7 @@ public class UsuarioResource {
 
     @GET
     @Path("/my-user")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public Response findMyUser() {
         Log.info("Busca do proprio usuario.");
        return Response.ok(service.findMyUser()).build();

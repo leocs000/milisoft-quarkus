@@ -3,6 +3,7 @@ package unitins.tp1.resource;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import io.quarkus.logging.Log;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -36,7 +37,7 @@ public class CalibreResource {
 
     @Transactional
     @POST
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response insert(CalibreDTO dto) {
         try {
             
@@ -51,7 +52,7 @@ public class CalibreResource {
     @PUT
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public CalibreResponseDTO update(CalibreDTO dto, @PathParam("id") Long id) {
         Log.info("Atualizando um calibre: "+id);
         return service.update(dto, id);
@@ -60,14 +61,14 @@ public class CalibreResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public void delete(@PathParam("id") Long id) {
         Log.info("Deletando um calibre:" +id);
         service.delete(id);
     }
 
     @GET
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("30") int pageSize){
@@ -78,7 +79,7 @@ public class CalibreResource {
 
     @GET
     @Path("/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response findById(@PathParam("id") Long id){
         Log.info("Buscando um calibre expecificado pelo id: "+id);
         return Response.ok(service.findById(id)).build();
@@ -86,7 +87,7 @@ public class CalibreResource {
 
     @GET
     @Path("/search/nome/{nome}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public Response findByNome(
             @PathParam("nome") String calibre,
             @QueryParam("page") @DefaultValue("0") int page,

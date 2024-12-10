@@ -3,6 +3,7 @@ package unitins.tp1.resource;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import io.quarkus.logging.Log;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -33,7 +34,7 @@ public class MaterialResource {
 
     @Transactional
     @POST
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response insert(MaterialDTO dto) {
         try {
             
@@ -48,7 +49,7 @@ public class MaterialResource {
     @PUT
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public MaterialResponseDTO update(MaterialDTO dto, @PathParam("id") Long id) {
         Log.info("Atualizando um Material: "+id);
         return service.update(dto, id);
@@ -57,14 +58,14 @@ public class MaterialResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public void delete(@PathParam("id") Long id) {
         Log.info("Deletando um material:" +id);
         service.delete(id);
     }
 
     @GET
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public Response findAll( 
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("30") int pageSize){
@@ -75,7 +76,7 @@ public class MaterialResource {
 
     @GET
     @Path("/{id}")
-//    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public Response findById(@PathParam("id") Long id){
         Log.info("Buscando um material expecificado pelo id: "+id);
         return Response.ok(service.findById(id)).build();
@@ -83,7 +84,7 @@ public class MaterialResource {
 
     @GET
     @Path("/search/nome/{nome}")
-//    @RolesAllowed({"User","Admin"})
+    @RolesAllowed({"User","Admin"})
     public Response findByNome(
             @PathParam("nome") String nome,
             @QueryParam("page") @DefaultValue("0") int page,
