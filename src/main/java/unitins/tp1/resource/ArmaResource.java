@@ -91,7 +91,7 @@ public class ArmaResource {
     }
 
     @GET
-    @RolesAllowed({"User", "Admin"})
+//    @RolesAllowed({"User", "Admin"})
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("30") int pageSize) {
@@ -119,7 +119,7 @@ public class ArmaResource {
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({"User", "Admin"})
+//    @RolesAllowed({"User", "Admin"})
     public Response findByNome(
         @PathParam("nome") String nome,
         @QueryParam("page") @DefaultValue("0") int page,
@@ -156,7 +156,7 @@ public class ArmaResource {
 
     @GET
     @Path("/download/imagem/{nomeImagem}")
-    @RolesAllowed({"User", "Admin"})
+//    @RolesAllowed({"User", "Admin"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         try {
