@@ -1,5 +1,8 @@
 package unitins.tp1.resource;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
@@ -22,6 +25,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 import unitins.tp1.dto.pedido.PedidoDTO;
+import unitins.tp1.model.FormaDePagamento;
 import unitins.tp1.service.cliente.ClienteService;
 import unitins.tp1.service.pedido.PedidoService;
 
@@ -49,7 +53,13 @@ public class PedidoResource {
     public Response insert(@Valid PedidoDTO dto) {
         LOG.info("Executando criação de pedido");
         String login = jwt.getSubject();
+        System.out.println("-------------- login ---------------------");
+        System.out.println(login);
+        System.out.println("-----------------------------------");
         Long idCliente = clienteService.findByUsuario(login).id();
+        System.out.println("------------------IdCliente-----------------");
+        System.out.println(idCliente);
+        System.out.println("-----------------------------------");
 
         return Response.status(Status.CREATED).entity(pedidoService.insert(dto, idCliente)).build();
     }
@@ -104,5 +114,11 @@ public class PedidoResource {
         } catch (NotFoundException e) {
             return Response.status(Status.NOT_FOUND).entity(e.getMessage()).build();
         }
+    }
+
+    @GET 
+    @Path("/formapagamento")
+    public List<FormaDePagamento> formaPagamento() { 
+        return Arrays.asList(FormaDePagamento.values()); 
     }
 }
