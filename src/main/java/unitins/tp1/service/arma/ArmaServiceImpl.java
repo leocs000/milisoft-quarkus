@@ -122,9 +122,16 @@ public class ArmaServiceImpl implements ArmaService {
     }
 
     @Override
+    @Transactional
     public ArmaResponseDTO updateNomeImagem(Long id, String nomeImagem) {
+
+        System.out.println(nomeImagem + id);
+        
         Arma arma = repository.findById(id);
         arma.setNomeImagem(nomeImagem);
+
+        ArmaResponseDTO armas = ArmaResponseDTO.valueOf(arma);
+        System.out.println(arma.getNomeImagem());
         return ArmaResponseDTO.valueOf(arma);
     }
 

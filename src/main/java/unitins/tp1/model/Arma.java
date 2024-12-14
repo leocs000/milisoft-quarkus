@@ -34,11 +34,13 @@ public class Arma extends Produto{
     @JoinColumn(name = "id_tipoTiro")
     private TipoTiro tipoTiro;
 
+    @Column
+    private String nomeImagem;
+
     // @ManyToOne
     // @JoinColumn(name = "id_municao")
     // private Municao tipoMunicao;
 
-    @Column(length = 60)
-    private String nomeImagem;
+    
 
 }

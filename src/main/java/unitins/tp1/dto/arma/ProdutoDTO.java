@@ -17,7 +17,7 @@ public class ProdutoDTO {
     @NotNull(message = "insira o preco corretamente")
     double preco;
 
-    @NotBlank(message = "insira a descrição corretamente")
+    
     String descricao;
     String fabricante;
     String modelo;
@@ -29,7 +29,7 @@ public class ProdutoDTO {
     public ProdutoDTO(@NotBlank(message = "insira o nome corretamente") String nome,
                       @NotNull(message = "insira a qtdNoEstoque corretamente") int qtdNoEstoque,
                       @NotNull(message = "insira o preco corretamente") double preco,
-                      @NotBlank(message = "insira a descrição corretamente") String descricao,
+                      String descricao,
                       String fabricante,
                       String modelo,
                       Double peso,

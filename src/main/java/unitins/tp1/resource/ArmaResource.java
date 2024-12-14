@@ -137,7 +137,7 @@ public class ArmaResource {
 
     @PATCH
     @Path("/upload/imagem/{id}")
-    @RolesAllowed({"Admin"})
+//    @RolesAllowed({"Admin"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ImageForm form, @PathParam("id") Long id) {
         try {
