@@ -56,7 +56,7 @@ public class AuthResource {
 
         LOG.info("Finalizando o processo de login");
 
-        return Response.ok().header("Authorization", token).build();
+        return Response.ok(result).header("Authorization", token).build();
 
     }
 

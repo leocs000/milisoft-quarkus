@@ -77,13 +77,13 @@ public class ClienteServiceImpl implements ClienteService {
             }
         }
 
-        if (dto.listaTelefones() != null &&
+        /* if (dto.listaTelefones() != null &&
                 !dto.listaTelefones().isEmpty()) {
             novoCliente.setListaTelefones(new ArrayList<String>());
             for (String telefone : dto.listaTelefones()) {
                 novoCliente.getListaTelefones().add(telefone);
             }
-        }
+        } */
 
         Usuario usuario = new Usuario();
         usuario.setLogin(dto.login());

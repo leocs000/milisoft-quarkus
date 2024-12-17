@@ -56,21 +56,22 @@ VALUES
 
 INSERT INTO calibre(calibre)
 VALUES
-    ('.357 Magnum'),
-    ('5.56mm'),
-    ('9mm'),
-    ('7.62mm NATO'),
-    ('.45 ACP'),
-    ('.40 S&W'),
-    ('.22 LR'),
-    ('.308 Winchester'),
-    ('.50 BMG'),
-    ('6.5mm Creedmoor'),
-    ('10mm Auto'),
-    ('.380 ACP'),
-    ('.44 Magnum'),
-    ('.223 Remington'),
-    ('.300 Blackout');
+    ('6mm BB'),
+    ('8mm BB'),
+    ('0.12g BB'),
+    ('0.20g BB'),
+    ('0.25g BB'),
+    ('0.28g BB'),
+    ('0.30g BB'),
+    ('0.32g BB'),
+    ('0.36g BB'),
+    ('0.40g BB'),
+    ('0.43g BB'),
+    ('0.45g BB'),
+    ('0.48g BB'),
+    ('0.50g BB'),
+    ('0.60g BB');
+
 
 INSERT INTO material(material)
 VALUES
@@ -126,16 +127,17 @@ INSERT INTO arma(
     nome, qtdnoestoque, preco, descricao, fabricante, modelo, peso, id_material, id_calibre,
     id_tipoArma, id_acabamento, capacidadedetiro, propulsor, velocidade, id_tipoTiro, nomeImagem)
 VALUES
-    ('Rifle M4A1', 15, 1200.00, 'Rifle de airsoft com alta precisão', 'Tokyo Marui', 'M4A1', 3.5, 1, 1, 1, 1, 30, 'Elétrico', '400', 1, 'metralhadora.jpg'),
-    ('Pistola Glock 17', 25, 800.00, 'Pistola de airsoft compacta e leve', 'WE Tech', 'G17', 0.7, 2, 2, 2, 2, 20, 'Gás', '300', 2, 'metralhadora.jpg'),
-    ('Sniper L96', 10, 1500.00, 'Rifle sniper de alta precisão', 'Well', 'L96', 4.5, 3, 3, 3, 3, 10, 'Mola', 450, 3, 'metralhadora.jpg'),
-    ('Shotgun M870', 8, 900.00, 'Espingarda de airsoft com ação de bombeamento', 'CYMA', 'M870', 3.0, 4, 4, 4, 4, 8, 'Mola', '350', 4, 'metralhadora.jpg'),
-    ('SMG MP5', 20, 1100.00, 'Submetralhadora de airsoft compacta', 'Classic Army', 'MP5', 2.5, 5, 5, 5, 5, 25, 'Elétrico', '380', 5, 'metralhadora.jpg'),
-    ('Revolver Colt Python', 12, 700.00, 'Revolver de airsoft com design clássico', 'KWC', 'Python', 1.2, 6, 6, 6, 6, 6, 'CO2', '320', 6, 'metralhadora.jpg'),
-    ('Rifle AK47', 18, 1300.00, 'Rifle de airsoft robusto e durável', 'CYMA', 'AK47', 3.8, 7, 7, 7, 7, 30, 'Elétrico', '410', 7, 'metralhadora.jpg'),
-    ('Pistola Desert Eagle', 10, 950.00, 'Pistola de airsoft com grande impacto', 'Tokyo Marui', 'Desert Eagle', 1.5, 8, 8, 8, 8, 7, 'Gás', '330', 8, 'metralhadora.jpg'),
-    ('Rifle G36C', 14, 1150.00, 'Rifle de airsoft compacto e versátil', 'Umarex', 'G36C', 2.9, 9, 9, 7, 9, 25, 'Elétrico', '390', 9, 'metralhadora.jpg'),
-    ('Pistola Beretta M9', 22, 850.00, 'Pistola de airsoft com design militar', 'WE Tech', 'M9', 0.9, 10, 10, 6, 10, 15, 'Gás', '310', 10, 'metralhadora.jpg');
+    ('Rifle M4A1', 15, 1200.00, 'Rifle de airsoft com alta precisão', 'Tokyo Marui', 'M4A1', 3.5, 1, 1, 1, 1, 30, 'Elétrico', '400', 1, 'm4a1.jpg'),
+    ('Pistola Glock 17', 25, 800.00, 'Pistola de airsoft compacta e leve', 'WE Tech', 'G17', 0.7, 2, 2, 2, 2, 20, 'Gás', '300', 2, 'glock17.jpg'),
+    ('Sniper L96', 10, 1500.00, 'Rifle sniper de alta precisão', 'Well', 'L96', 4.5, 3, 3, 3, 3, 10, 'Mola', 450, 3, 'l96.jpg'),
+    ('Shotgun M870', 8, 900.00, 'Espingarda de airsoft com ação de bombeamento', 'CYMA', 'M870', 3.0, 4, 4, 4, 4, 8, 'Mola', '350', 4, 'm870.jpg'),
+    ('SMG MP5', 20, 1100.00, 'Submetralhadora de airsoft compacta', 'Classic Army', 'MP5', 2.5, 5, 5, 5, 5, 25, 'Elétrico', '380', 5, 'mp5.jpg'),
+    ('Revolver Colt Python', 12, 700.00, 'Revolver de airsoft com design clássico', 'KWC', 'Python', 1.2, 6, 6, 6, 6, 6, 'CO2', '320', 6, 'coltpython.jpg'),
+    ('Rifle AK47', 18, 1300.00, 'Rifle de airsoft robusto e durável', 'CYMA', 'AK47', 3.8, 7, 7, 7, 7, 30, 'Elétrico', '410', 7, 'ak47.jpg'),
+    ('Pistola Desert Eagle', 10, 950.00, 'Pistola de airsoft com grande impacto', 'Tokyo Marui', 'Desert Eagle', 1.5, 8, 8, 8, 8, 7, 'Gás', '330', 8, 'deserteagle.jpg'),
+    ('Rifle G36C', 14, 1150.00, 'Rifle de airsoft compacto e versátil', 'Umarex', 'G36C', 2.9, 9, 9, 7, 9, 25, 'Elétrico', '390', 9, 'g36c.jpg'),
+    ('Pistola Beretta M9', 22, 850.00, 'Pistola de airsoft com design militar', 'WE Tech', 'M9', 0.9, 10, 10, 6, 10, 15, 'Gás', '310', 10, 'berettam9.jpg');
+
 
 
 INSERT INTO funcionario (matricula, cpf, telefone, nome, email)

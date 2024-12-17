@@ -21,7 +21,7 @@ public record ClienteDTO(
        
         String numeroRegistro_posse_porte,
        
-        List<String> listaTelefones,
+        //List<String> listaTelefones,
         
         List<EnderecoDTO> listaEnderecos,
         
